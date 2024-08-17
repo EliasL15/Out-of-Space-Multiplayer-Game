@@ -1,4 +1,4 @@
-# PLEASE READ!
+# Out of Space
 Our project is a game which is embedded in a web browser written in Godot with a Backend game server written in Go. 
 
 ## Requirements to run game locally
