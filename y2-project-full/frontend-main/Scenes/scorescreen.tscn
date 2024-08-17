@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfwotwoqbbmi2"]
+
+[ext_resource type="Script" path="res://scripts/scorescreen.gd" id="1_jihgb"]
+
+[node name="scorescreen" type="CanvasLayer"]
+script = ExtResource("1_jihgb")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.473
+anchor_right = 0.532
+anchor_bottom = 0.056
+offset_left = -8.11804
+offset_right = 0.287964
+offset_bottom = -0.00800323
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1

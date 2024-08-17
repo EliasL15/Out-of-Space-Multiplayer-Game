@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://f76o6s128atq"]
+
+[ext_resource type="Script" path="res://memory/memoryMain.gd" id="1_g4mro"]
+[ext_resource type="FontFile" uid="uid://d4dc84pifcc58" path="res://Fonts/VT323_font/VT323-Regular.ttf" id="2_3eeoj"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_g4mro")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(684, 386)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1172.0
+offset_top = 59.0
+offset_right = 1292.0
+offset_bottom = 209.0
+theme_override_fonts/font = ExtResource("2_3eeoj")
+theme_override_font_sizes/font_size = 150
+text = "59"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 358.0
+offset_top = 254.0
+offset_right = 1058.0
+offset_bottom = 573.0
+theme_override_fonts/font = ExtResource("2_3eeoj")
+theme_override_font_sizes/font_size = 250
+
+[node name="TimerDel" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[node name="TimerNorm" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TimerDel" to="." method="_on_timer_del_timeout"]
+[connection signal="timeout" from="TimerNorm" to="." method="_on_timer_norm_timeout"]

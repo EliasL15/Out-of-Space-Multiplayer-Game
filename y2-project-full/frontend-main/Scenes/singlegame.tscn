@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg4h15y2oorci"]
+
+[ext_resource type="Script" path="res://scripts/flappy_bird.gd" id="1_1wmsj"]
+[ext_resource type="Texture2D" uid="uid://dot3y5xqlq8gk" path="res://art/Main_menu/background.png" id="2_rb7f3"]
+[ext_resource type="PackedScene" uid="uid://dfjv22j4j8hxs" path="res://Scenes/pipemanager.tscn" id="6_06cct"]
+[ext_resource type="Texture2D" uid="uid://dcexcwnxfqn70" path="res://FlappyBirdAssets/img/back.png" id="7_7uwqg"]
+[ext_resource type="Script" path="res://scripts/floor.gd" id="8_ujlpj"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="10_wpnul"]
+[ext_resource type="Script" path="res://scripts/countdown_timer.gd" id="12_35ens"]
+
+[node name="game" type="Node2D"]
+position = Vector2(472, 8304)
+script = ExtResource("1_1wmsj")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(688, 405)
+scale = Vector2(1.55, 1.3)
+texture = ExtResource("2_rb7f3")
+
+[node name="pipemanager" parent="." instance=ExtResource("6_06cct")]
+
+[node name="floor1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(383, 330)
+scale = Vector2(3.06347, 2.98389)
+texture = ExtResource("7_7uwqg")
+script = ExtResource("8_ujlpj")
+
+[node name="floor2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(393, 328)
+scale = Vector2(2.96736, 2.97506)
+texture = ExtResource("7_7uwqg")
+offset = Vector2(530, 0)
+script = ExtResource("8_ujlpj")
+
+[node name="countdown_timer" type="Label" parent="."]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+script = ExtResource("12_35ens")
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("10_wpnul")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(136, 205)
+offset = Vector2(350, 80)
+zoom = Vector2(0.35, 0.2)
+
+[node name="currentscore" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 8000)
+offset_left = 72.0
+offset_top = -172.0
+offset_right = 3027.0
+offset_bottom = 9120.0
+theme_override_font_sizes/font_size = 34
+text = "sadasddasdsad
+"

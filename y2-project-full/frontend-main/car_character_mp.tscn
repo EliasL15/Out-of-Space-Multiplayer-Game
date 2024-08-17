@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnjkjrqv5xfhk"]
+
+[ext_resource type="Script" path="res://carcharacter.gd" id="1_vjgnq"]
+[ext_resource type="Texture2D" uid="uid://ceasb38grv5c5" path="res://icon.svg" id="2_e0e7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bnhu"]
+size = Vector2(7.75, 7.25)
+
+[node name="carCharacter" type="RigidBody2D"]
+mass = 1e+06
+gravity_scale = 1.66533e-16
+script = ExtResource("1_vjgnq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(19, 7.5)
+scale = Vector2(0.0625, 0.0546875)
+texture = ExtResource("2_e0e7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19.125, 7.375)
+shape = SubResource("RectangleShape2D_2bnhu")
+
+[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
+position = Vector2(-0.75, 0.25)
+zoom = Vector2(2, 2)
+
+[node name="Laps" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -40.0
+offset_right = -12.0
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 6
+text = "Lap Count:
+"

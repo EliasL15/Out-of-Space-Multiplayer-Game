@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqg7fn03jolvy"]
+
+[ext_resource type="Script" path="res://shooter/scripts/player.gd" id="1_1wmwq"]
+[ext_resource type="Texture2D" uid="uid://11nq7ddmy36q" path="res://shooter/img/alien.png" id="3_orggh"]
+[ext_resource type="FontFile" uid="uid://d4dc84pifcc58" path="res://Fonts/VT323_font/VT323-Regular.ttf" id="4_ei5b6"]
+[ext_resource type="Texture2D" uid="uid://bud2fga67j0tm" path="res://shooter/img/gun.png" id="4_idvrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha6k5"]
+size = Vector2(190, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv57v"]
+size = Vector2(210, 230)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vth4g"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GunRotation:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:vitality")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("ProgressBar:value")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("ProgressBar:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Icon:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("GunRotation/gun:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_1wmwq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(3, 3)
+texture = ExtResource("3_orggh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.99999, -2.49999)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_ha6k5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.99999, 9.53674e-06)
+shape = SubResource("RectangleShape2D_wv57v")
+
+[node name="GunRotation" type="Node2D" parent="."]
+
+[node name="gun" type="Sprite2D" parent="GunRotation"]
+position = Vector2(215, 15)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_idvrg")
+
+[node name="bulletSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(345, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vth4g")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
+offset_left = -80.0
+offset_top = -215.0
+offset_right = 75.0
+offset_bottom = -163.0
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="player_name" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -335.0
+offset_right = 75.0
+offset_bottom = -235.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ei5b6")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

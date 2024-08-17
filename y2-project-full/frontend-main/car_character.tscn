@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://wstuhvvqxcel"]
+
+[ext_resource type="Script" path="res://carcharacter.gd" id="1_r0rua"]
+[ext_resource type="Texture2D" uid="uid://bkrgrlps3hcn" path="res://art/ship1.png" id="2_mkxrj"]
+
+[node name="carCharacter" type="RigidBody2D"]
+mass = 1e+06
+gravity_scale = 1.66533e-16
+script = ExtResource("1_r0rua")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(19, 7)
+scale = Vector2(0.03125, 0.0309801)
+texture = ExtResource("2_mkxrj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_as_relative = false
+position = Vector2(19, 7)
+scale = Vector2(0.03125, 0.0309801)
+polygon = PackedVector2Array(13, -128.5, 16.8, -128.5, 20, -125.3, 20, -122.9, 27.8, -100.2, 29.2, -110.5, 31.7, -110.5, 41, -114.5, 41, -111.6, 44, -109.6, 44, -103.6, 47, -101.6, 47, -91, 46.8, -90.5, 49, -88.3, 49, -44.5, 47.9, -44.5, 46.9, -24.5, 44.5, -24.5, 41, -23.1, 41, -19.5, 42.5, -14.5, 43.3, -14.5, 48.3, -3.5, 48.9, -3.5, 57.9, 7.5, 71.8, 7.5, 75, 10.7, 75, 54.6, 139, 110.6, 139, 112.5, 141, 114, 141, 137.5, 132.9, 137.5, 69, 110.5, 69, 132.7, 68, 137.5, 28, 137.5, 28, 132.5, 27.1, 109.5, 23.2, 109.5, 20, 106.3, 20, 85.3, 18.2, 88.5, 15.5, 88.5, 12, 90.6, 12, 91.9, 7.39999, 103.5, 6.10001, 103.5, 4.10001, 106.5, -5, 106.5, -5, 104, -11.3, 91.5, -20, 84, -20, 107, -27, 109, -27, 132.7, -28, 137.5, -68, 137.5, -70.6, 111.4, -135.5, 137.5, -141, 137.5, -141, 113.8, -75, 54.6, -75, 9.7, -59, 7.7, -49, -2.3, -49, -4, -42, -16, -42, -19.7, -41.5, -22.5, -43.8, -22.5, -47, -25.7, -47, -33.5, -49, -46.3, -49, -88.6, -46, -90.6, -46, -91.5, -47.2, -102.5, -45.5, -102.5, -43.6, -110.5, -41.3, -110.5, -32, -114.5, -32, -111.6, -29, -109.6, -29, -102.8, -28.3, -100.8, -24, -108, -24, -115.8, -21.4, -123.5, -19.9, -123.5, -7, -137.4, 7, -137.5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(18.375, 7.625)
+zoom = Vector2(2, 2)
+
+[node name="Laps" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -40.0
+offset_right = -12.0
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 6
+text = "Lap Count:
+"

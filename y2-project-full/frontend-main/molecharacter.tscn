@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8gm6dxjrw33y"]
+
+[ext_resource type="Texture2D" uid="uid://dfnrb3ior0dn8" path="res://art/out_of_space/Screenshot 2024-01-31 at 9.05.24 PM.png" id="2_lgvvy"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="3_8cpvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pr77"]
+size = Vector2(139.5, 127)
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.99658, 8.5)
+scale = Vector2(0.111206, 0.101562)
+texture = ExtResource("2_lgvvy")
+offset = Vector2(100, 2.08165e-12)
+script = ExtResource("3_8cpvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13.4844, 8.25)
+shape = SubResource("RectangleShape2D_7pr77")

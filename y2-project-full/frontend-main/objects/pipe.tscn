@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnc7t7hg2ssq3"]
+
+[ext_resource type="Script" path="res://scripts/pipe.gd" id="1_gpf2m"]
+[ext_resource type="Texture2D" uid="uid://byqgthl35ujv2" path="res://FlappyBirdAssets/img/pipe.png" id="2_dgyie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txy6r"]
+size = Vector2(60.5, 329.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsn6t"]
+size = Vector2(60, 481.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oxb4"]
+size = Vector2(62, 330)
+
+[node name="pipe" type="Node2D"]
+position = Vector2(520, 3)
+script = ExtResource("1_gpf2m")
+
+[node name="Sprite2D_up" type="Sprite2D" parent="."]
+position = Vector2(9, -252.164)
+scale = Vector2(1, 1.91242)
+texture = ExtResource("2_dgyie")
+
+[node name="Sprite2D_down" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(-1.00006, 894.614)
+rotation = 3.14159
+scale = Vector2(1.14603, -1.60676)
+texture = ExtResource("2_dgyie")
+
+[node name="scorearea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D_center" type="CollisionShape2D" parent="scorearea"]
+position = Vector2(1, 353)
+shape = SubResource("RectangleShape2D_txy6r")
+
+[node name="pipearea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D_up" type="CollisionShape2D" parent="pipearea"]
+position = Vector2(10, -54.875)
+shape = SubResource("RectangleShape2D_gsn6t")
+
+[node name="CollisionShape2D_down" type="CollisionShape2D" parent="pipearea"]
+position = Vector2(-5, 706)
+shape = SubResource("RectangleShape2D_2oxb4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true

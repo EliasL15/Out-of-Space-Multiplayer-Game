@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfbfj3ts1bbvn"]
+
+[ext_resource type="Script" path="res://Scenes/winner.gd" id="1_38aa5"]
+[ext_resource type="FontFile" uid="uid://d4dc84pifcc58" path="res://Fonts/VT323_font/VT323-Regular.ttf" id="2_qkbbr"]
+[ext_resource type="Texture2D" uid="uid://dot3y5xqlq8gk" path="res://art/Main_menu/background.png" id="3_paokf"]
+[ext_resource type="Script" path="res://Scenes/viewLeaderboardBtn.gd" id="4_54e46"]
+
+[node name="WBlue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38aa5")
+
+[node name="LeaderboardLbl" type="Label" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 630.0
+offset_top = 300.0
+offset_right = 1062.0
+offset_bottom = 390.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_qkbbr")
+theme_override_font_sizes/font_size = 90
+text = "Winner is"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="winningTeamLbl" type="Label" parent="."]
+z_index = 4
+layout_mode = 2
+offset_left = 630.0
+offset_top = 350.0
+offset_right = 1062.0
+offset_bottom = 440.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.670588, 0.788235, 1, 1)
+theme_override_fonts/font = ExtResource("2_qkbbr")
+theme_override_font_sizes/font_size = 90
+text = "Blue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(567, 221)
+scale = Vector2(0.680645, 0.680645)
+texture = ExtResource("3_paokf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(684, 386)
+
+[node name="viewLeaderboardBtn" type="Button" parent="."]
+layout_mode = 2
+offset_left = 758.0
+offset_top = 440.0
+offset_right = 858.0
+offset_bottom = 471.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_qkbbr")
+text = "Next"
+script = ExtResource("4_54e46")
+
+[connection signal="pressed" from="viewLeaderboardBtn" to="viewLeaderboardBtn" method="_on_pressed"]

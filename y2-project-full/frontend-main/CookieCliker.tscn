@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://chk3n2q7s6moh"]
+
+[ext_resource type="Script" path="res://CharacterBody2Dmole.gd" id="1_cwqrn"]
+[ext_resource type="Texture2D" uid="uid://dfnrb3ior0dn8" path="res://art/out_of_space/Screenshot 2024-01-31 at 9.05.24 PM.png" id="2_skdwx"]
+[ext_resource type="Script" path="res://Cookie_Cliker.gd" id="3_2iyhf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pr77"]
+size = Vector2(139.5, 127)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_cwqrn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-89, 0.999985)
+scale = Vector2(0.903516, 0.813768)
+texture = ExtResource("2_skdwx")
+offset = Vector2(100, 2.08165e-12)
+script = ExtResource("3_2iyhf")
+
+[node name="ClickerScore" type="Label" parent="Sprite2D"]
+offset_left = -70.0
+offset_top = -92.0
+offset_right = 19.0
+offset_bottom = -66.0
+theme_override_font_sizes/font_size = 18
+text = "Score: 0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0.5)
+shape = SubResource("RectangleShape2D_7pr77")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = -153.0
+offset_top = -56.0
+offset_right = -83.0
+offset_bottom = -34.0
+theme_override_font_sizes/font_size = 15
+text = "Time: "
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

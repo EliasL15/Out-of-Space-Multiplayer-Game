@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfjv22j4j8hxs"]
+
+[ext_resource type="Script" path="res://scripts/pipemanager.gd" id="1_7f36j"]
+[ext_resource type="PackedScene" uid="uid://bnc7t7hg2ssq3" path="res://objects/pipe.tscn" id="2_6tpgx"]
+
+[node name="pipemanager" type="Node"]
+script = ExtResource("1_7f36j")
+pipe = ExtResource("2_6tpgx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+autostart = true

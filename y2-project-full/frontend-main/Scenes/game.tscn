@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqi0ivi2x4cfn"]
+
+[ext_resource type="Texture2D" uid="uid://b78bgksvwvkdl" path="res://FlappyBirdAssets/img/bg.jpg" id="1_tqp1q"]
+[ext_resource type="Texture2D" uid="uid://dcexcwnxfqn70" path="res://FlappyBirdAssets/img/back.png" id="2_ovusq"]
+[ext_resource type="Script" path="res://scripts/floor.gd" id="3_6krem"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="3_aarhk"]
+[ext_resource type="Texture2D" uid="uid://c7qu1jvph21x5" path="res://FlappyBirdAssets/img/bird.png" id="3_xpwel"]
+[ext_resource type="PackedScene" uid="uid://dfjv22j4j8hxs" path="res://scenes/pipemanager.tscn" id="6_iuc5t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5xq0"]
+radius = 19.177
+
+[sub_resource type="Animation" id="Animation_8yoec"]
+resource_name = "DIE"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3l4cg"]
+resource_name = "FLY"
+length = 0.30001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_xpvcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iogk4"]
+_data = {
+"DIE": SubResource("Animation_8yoec"),
+"FLY": SubResource("Animation_3l4cg"),
+"RESET": SubResource("Animation_xpvcc")
+}
+
+[node name="game" type="Node"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(687.5, 405)
+scale = Vector2(3.57937, 3)
+texture = ExtResource("1_tqp1q")
+
+[node name="pipemanager" parent="." instance=ExtResource("6_iuc5t")]
+
+[node name="floor1" type="Sprite2D" parent="."]
+position = Vector2(383, 330)
+scale = Vector2(3.06347, 2.98389)
+texture = ExtResource("2_ovusq")
+script = ExtResource("3_6krem")
+
+[node name="floor2" type="Sprite2D" parent="."]
+position = Vector2(393, 328)
+scale = Vector2(2.96736, 2.97506)
+texture = ExtResource("2_ovusq")
+offset = Vector2(530, 0)
+script = ExtResource("3_6krem")
+
+[node name="bird" type="RigidBody2D" parent="."]
+position = Vector2(55, 30)
+rotation = -0.0323291
+scale = Vector2(1.30767, 1.1453)
+gravity_scale = 10.0
+script = ExtResource("3_aarhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bird"]
+position = Vector2(41.9556, 112.495)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_x5xq0")
+
+[node name="Sprite2D" type="Sprite2D" parent="bird"]
+position = Vector2(35.9399, 108.779)
+scale = Vector2(1.58277, 2.06929)
+texture = ExtResource("3_xpwel")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bird"]
+libraries = {
+"": SubResource("AnimationLibrary_iogk4")
+}
+autoplay = "FLY"

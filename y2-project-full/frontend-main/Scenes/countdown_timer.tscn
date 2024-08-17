@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyia6ep6y2tif"]
+
+[ext_resource type="Script" path="res://scripts/countdown_timer.gd" id="1_g4f67"]
+
+[node name="countdown_timer" type="Node"]
+
+[node name="countdown_timer" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+script = ExtResource("1_g4f67")

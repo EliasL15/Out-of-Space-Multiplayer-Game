@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpgbapuy35j8j"]
+
+[ext_resource type="FontFile" uid="uid://d4dc84pifcc58" path="res://Fonts/VT323_font/VT323-Regular.ttf" id="1_jb1s4"]
+[ext_resource type="Script" path="res://Scenes/leaderboard.gd" id="1_juui5"]
+[ext_resource type="Texture2D" uid="uid://dot3y5xqlq8gk" path="res://art/Main_menu/background.png" id="2_sftc0"]
+[ext_resource type="Script" path="res://Scenes/BackMMBtn.gd" id="3_1n3jc"]
+
+[node name="LobbyControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juui5")
+
+[node name="BlueTeamContainerLB" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 180)
+layout_mode = 2
+offset_left = 580.0
+offset_top = 360.0
+offset_right = 780.0
+offset_bottom = 540.0
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemListBlueLB" type="ItemList" parent="BlueTeamContainerLB"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/v_separation = 10
+auto_height = true
+same_column_width = true
+fixed_column_width = 200
+icon_mode = 0
+
+[node name="RedTeamContainerLB" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 180)
+layout_mode = 2
+offset_left = 730.0
+offset_top = 360.0
+offset_right = 930.0
+offset_bottom = 540.0
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemListRedLB" type="ItemList" parent="RedTeamContainerLB"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/v_separation = 10
+auto_height = true
+same_column_width = true
+fixed_column_width = 200
+icon_mode = 0
+
+[node name="LeaderboardLbl" type="Label" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 630.0
+offset_top = 300.0
+offset_right = 1062.0
+offset_bottom = 390.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_jb1s4")
+theme_override_font_sizes/font_size = 90
+text = "Leaderboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RedLbl" type="Label" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 700.0
+offset_top = 330.0
+offset_right = 1132.0
+offset_bottom = 420.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.921569, 0.278431, 0.278431, 1)
+theme_override_fonts/font = ExtResource("1_jb1s4")
+theme_override_font_sizes/font_size = 90
+text = "Red"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlueLbl" type="Label" parent="."]
+z_index = 4
+layout_mode = 2
+offset_left = 550.0
+offset_top = 330.0
+offset_right = 982.0
+offset_bottom = 420.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.670588, 0.788235, 1, 1)
+theme_override_fonts/font = ExtResource("1_jb1s4")
+theme_override_font_sizes/font_size = 90
+text = "Blue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(567, 221)
+scale = Vector2(0.680645, 0.680645)
+texture = ExtResource("2_sftc0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(684, 386)
+
+[node name="BackMMBtn" type="Button" parent="."]
+layout_mode = 2
+offset_left = 758.0
+offset_top = 440.0
+offset_right = 858.0
+offset_bottom = 471.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_jb1s4")
+text = "Back to Main Menu"
+script = ExtResource("3_1n3jc")
+
+[node name="mvpLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 372.0
+offset_right = 968.0
+offset_bottom = 462.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.854902, 0.74902, 0.372549, 1)
+theme_override_fonts/font = ExtResource("1_jb1s4")
+theme_override_font_sizes/font_size = 90
+text = "MVP!!"
+
+[connection signal="pressed" from="BackMMBtn" to="BackMMBtn" method="_on_pressed"]

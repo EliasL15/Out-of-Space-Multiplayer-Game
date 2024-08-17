@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://dce7rvp7fojc0"]
+
+[ext_resource type="Script" path="res://shooter/scripts/MultiplayerControl.gd" id="1_lxx0a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lxx0a")
+
+[node name="host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 197.0
+offset_right = 348.0
+offset_bottom = 327.0
+text = "host"
+
+[node name="join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 191.0
+offset_right = 692.0
+offset_bottom = 321.0
+text = "join"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 196.0
+offset_right = 1062.0
+offset_bottom = 326.0
+text = "start game"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 80.0
+offset_right = 1056.0
+offset_bottom = 139.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(684, 384)
+zoom = Vector2(0.25, 0.25)
+
+[connection signal="button_down" from="host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="join" to="." method="_on_join_button_down"]
+[connection signal="button_down" from="start" to="." method="_on_start_button_down"]

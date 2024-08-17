@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw67ckdlxxbcc"]
+
+[ext_resource type="Texture2D" uid="uid://bwcf4grevwvtr" path="res://art/ship5.png" id="1_xualu"]
+
+[node name="carCharacter" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(19, 7)
+scale = Vector2(0.03125, 0.0309801)
+texture = ExtResource("1_xualu")

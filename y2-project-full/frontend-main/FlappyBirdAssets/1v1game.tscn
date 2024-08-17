@@ -1,0 +1,209 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2qha0qrimyf3"]
+
+[ext_resource type="PackedScene" uid="uid://cwijmkgpgad37" path="res://manager/audiomanager.tscn" id="1_sodu1"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_c30ow"]
+[ext_resource type="PackedScene" uid="uid://dsrasy1io6bod" path="res://scenes/endscreen.tscn" id="3_8kcte"]
+[ext_resource type="Texture2D" uid="uid://b78bgksvwvkdl" path="res://FlappyBirdAssets/img/bg.jpg" id="4_hdvle"]
+[ext_resource type="PackedScene" uid="uid://dfjv22j4j8hxs" path="res://scenes/pipemanager.tscn" id="5_qag76"]
+[ext_resource type="Texture2D" uid="uid://dcexcwnxfqn70" path="res://FlappyBirdAssets/img/back.png" id="6_kaylr"]
+[ext_resource type="Script" path="res://scripts/floor.gd" id="7_7n4jj"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="8_wnt5h"]
+[ext_resource type="Texture2D" uid="uid://c7qu1jvph21x5" path="res://FlappyBirdAssets/img/bird.png" id="9_f6mda"]
+[ext_resource type="Script" path="res://scripts/bird2.gd" id="10_vwdnk"]
+[ext_resource type="PackedScene" uid="uid://bfwotwoqbbmi2" path="res://scenes/scorescreen.tscn" id="11_c0h7u"]
+[ext_resource type="Script" path="res://scripts/countdown_timer.gd" id="12_3fcpc"]
+
+[sub_resource type="GDScript" id="GDScript_o8ldc"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5xq0"]
+radius = 19.177
+
+[sub_resource type="Animation" id="Animation_8yoec"]
+resource_name = "DIE"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bird1Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3l4cg"]
+resource_name = "FLY"
+length = 0.30001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bird1Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_xpvcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bird1Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bird2_Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ip55m"]
+resource_name = "bird2_fly"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bird2_Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iogk4"]
+_data = {
+"DIE": SubResource("Animation_8yoec"),
+"FLY": SubResource("Animation_3l4cg"),
+"RESET": SubResource("Animation_xpvcc"),
+"bird2_fly": SubResource("Animation_ip55m")
+}
+
+[node name="game" type="Node"]
+script = SubResource("GDScript_o8ldc")
+
+[node name="Audiomanager" parent="." instance=ExtResource("1_sodu1")]
+
+[node name="gamemanager" type="Node" parent="."]
+script = ExtResource("2_c30ow")
+end_screen_scene = ExtResource("3_8kcte")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(687.5, 405)
+scale = Vector2(3.57937, 3)
+texture = ExtResource("4_hdvle")
+
+[node name="pipemanager" parent="." instance=ExtResource("5_qag76")]
+
+[node name="floor1" type="Sprite2D" parent="."]
+position = Vector2(383, 330)
+scale = Vector2(3.06347, 2.98389)
+texture = ExtResource("6_kaylr")
+script = ExtResource("7_7n4jj")
+
+[node name="floor2" type="Sprite2D" parent="."]
+position = Vector2(393, 328)
+scale = Vector2(2.96736, 2.97506)
+texture = ExtResource("6_kaylr")
+offset = Vector2(530, 0)
+script = ExtResource("7_7n4jj")
+
+[node name="bird1" type="RigidBody2D" parent="." groups=["bird"]]
+position = Vector2(86, 71)
+rotation = -0.0323291
+scale = Vector2(1.30767, 1.1453)
+gravity_scale = 2.0
+script = ExtResource("8_wnt5h")
+
+[node name="bird1_CollisionShape2D" type="CollisionShape2D" parent="bird1"]
+position = Vector2(41.9556, 112.495)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_x5xq0")
+
+[node name="bird1_Sprite2D" type="Sprite2D" parent="bird1"]
+position = Vector2(35.9399, 108.779)
+scale = Vector2(1.58277, 2.06929)
+texture = ExtResource("9_f6mda")
+hframes = 3
+
+[node name="bird1_AnimationPlayer" type="AnimationPlayer" parent="bird1"]
+libraries = {
+"": SubResource("AnimationLibrary_iogk4")
+}
+autoplay = "FLY"
+
+[node name="bird2" type="RigidBody2D" parent="." groups=["bird"]]
+position = Vector2(86, 71)
+rotation = -0.0323291
+scale = Vector2(1.30767, 1.1453)
+gravity_scale = 2.0
+script = ExtResource("10_vwdnk")
+
+[node name="bird2_CollisionShape2D" type="CollisionShape2D" parent="bird2"]
+position = Vector2(43.5753, 217.386)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_x5xq0")
+
+[node name="bird2_Sprite2D" type="Sprite2D" parent="bird2"]
+position = Vector2(43.6742, 213.895)
+scale = Vector2(1.58277, 2.06929)
+texture = ExtResource("9_f6mda")
+hframes = 3
+
+[node name="bird2_AnimationPlayer" type="AnimationPlayer" parent="bird2"]
+libraries = {
+"": SubResource("AnimationLibrary_iogk4")
+}
+autoplay = "FLY"
+
+[node name="scorescreen" parent="." instance=ExtResource("11_c0h7u")]
+
+[node name="countdown_timer" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+script = ExtResource("12_3fcpc")
+metadata/_edit_use_anchors_ = true
