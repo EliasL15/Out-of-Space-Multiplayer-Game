@@ -1,5 +1,5 @@
 # Out of Space
-Our project is a game which is embedded in a web browser written in Godot with a Backend game server written in Go. 
+Our project is a game which is embedded in a web browser written in Godot with a Backend game server written in Go. [Click to view a demo video!](https://youtu.be/yf0aFzaz3DM)
 
 ## Requirements to run game locally
 - Go 1.21.6 for running the server
