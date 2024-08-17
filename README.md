@@ -1,5 +1,5 @@
 # PLEASE READ!
-Our project is a game which is embedded in a web browser written in Godot with a Backend game server written in Go. We can't "just send a website file" as our project uses multiple languages. 
+Our project is a game which is embedded in a web browser written in Godot with a Backend game server written in Go. 
 
 ## Requirements to run game locally
 - Go 1.21.6 for running the server
