@@ -13,10 +13,10 @@ The game will not work without the server so the server must be run using:
 ```
 go run .
 ``` 
-### frontend-src
+### frontend-main
 The entire frontend part of our game written in Godot 4.
 
-### backend-src
+### backend-main
 The Go backend for our server. This was setup to serve on our exported website so this will not work with the html file provied as it was setup to run on our game server.
 ### database
 `db-schema.sql` is a dump of our `playtest` database without any data populated wheras `db-populated.sql` is our database with our playtesting data. `mysqldump` can be used to import this database to MySQL
